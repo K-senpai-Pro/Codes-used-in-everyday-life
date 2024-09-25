@@ -1,0 +1,33 @@
+# ฟังก์ชันสำหรับคำนวณเวลาในการอ่านหนังสือ
+def calculate_reading_time(total_pages, pages_per_hour):
+    try:
+        reading_hours = total_pages / pages_per_hour  # คำนวณเวลาทั้งหมดในการอ่าน
+        return reading_hours
+    except ZeroDivisionError:
+        return None
+
+# ฟังก์ชันหลักสำหรับรับข้อมูลจากผู้ใช้
+def main():
+    try:
+        # รับข้อมูลจากผู้ใช้
+        total_pages = int(input("ใส่จำนวนหน้าทั้งหมดของหนังสือ: "))
+        pages_per_hour = int(input("ใส่จำนวนหน้าที่ฉันอ่านได้ต่อชั่วโมง: "))
+        
+        # ตรวจสอบค่าที่รับเข้ามา
+        if total_pages <= 0 or pages_per_hour <= 0:
+            print("กรุณาใส่ตัวเลขที่มากกว่า 0!")
+            return
+        
+        # คำนวณเวลาในการอ่าน
+        reading_time = calculate_reading_time(total_pages, pages_per_hour)
+        
+        if reading_time is not None:
+            print(f"ฉันจะใช้เวลาอ่านประมาณ {reading_time:.2f} ชั่วโมง")
+        else:
+            print("ไม่สามารถคำนวณเวลาได้ (การแบ่งด้วย 0 ไม่ถูกต้อง)")
+    
+    except ValueError:
+        print("กรุณาใส่ตัวเลขเท่านั้น!")
+
+# เรียกใช้ฟังก์ชันหลัก
+main()
