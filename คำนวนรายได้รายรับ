@@ -16,3 +16,65 @@ total_income, total_expenses, balance = calculate_balance(income, expenses)
 print(f"รายรับทั้งหมด: {total_income} บาท")
 print(f"รายจ่ายทั้งหมด: {total_expenses} บาท")
 print(f"ยอดคงเหลือ: {balance} บาท")
+# สร้างลิสต์เปล่าสำหรับเก็บรายรับและรายจ่าย
+income_list = []
+expenses_list = []
+
+# ฟังก์ชันสำหรับคำนวณรายรับและรายจ่าย
+def calculate_balance(income, expenses):
+    total_income = sum(income)  # รวมรายรับทั้งหมด
+    total_expenses = sum(expenses)  # รวมรายจ่ายทั้งหมด
+    balance = total_income - total_expenses  # คำนวณยอดคงเหลือ
+    return total_income, total_expenses, balance
+
+# ฟังก์ชันสำหรับเพิ่มรายรับ
+def add_income():
+    try:
+        income = float(input("ใส่จำนวนรายรับ: "))
+        income_list.append(income)
+        print(f"รายรับ {income} บาท ถูกเพิ่มแล้ว!")
+    except ValueError:
+        print("กรุณาใส่ตัวเลขเท่านั้น!")
+
+# ฟังก์ชันสำหรับเพิ่มรายจ่าย
+def add_expenses():
+    try:
+        expenses = float(input("ใส่จำนวนรายจ่าย: "))
+        expenses_list.append(expenses)
+        print(f"รายจ่าย {expenses} บาท ถูกเพิ่มแล้ว!")
+    except ValueError:
+        print("กรุณาใส่ตัวเลขเท่านั้น!")
+
+# ฟังก์ชันแสดงยอดสรุป
+def show_summary():
+    total_income, total_expenses, balance = calculate_balance(income_list, expenses_list)
+    print(f"\nรายงานสรุป:")
+    print(f"รายรับทั้งหมด: {total_income} บาท")
+    print(f"รายจ่ายทั้งหมด: {total_expenses} บาท")
+    print(f"ยอดคงเหลือ: {balance} บาท\n")
+
+# โปรแกรมหลัก
+def main():
+    while True:
+        print("เลือกตัวเลือก:")
+        print("1. เพิ่มรายรับ")
+        print("2. เพิ่มรายจ่าย")
+        print("3. แสดงยอดสรุป")
+        print("4. ออกจากโปรแกรม")
+        
+        choice = input("เลือกหมายเลข (1-4): ")
+        
+        if choice == '1':
+            add_income()
+        elif choice == '2':
+            add_expenses()
+        elif choice == '3':
+            show_summary()
+        elif choice == '4':
+            print("ขอบคุณที่ใช้งาน!")
+            break
+        else:
+            print("กรุณาเลือกตัวเลือกที่ถูกต้อง (1-4)\n")
+
+# เรียกใช้โปรแกรมหลัก
+main()
