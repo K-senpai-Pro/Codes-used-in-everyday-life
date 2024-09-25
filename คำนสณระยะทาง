@@ -1,0 +1,20 @@
+import math
+
+# ฟังก์ชันสำหรับคำนวณระยะทางระหว่างจุดสองจุด
+def calculate_distance(x1, y1, x2, y2):
+    distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+    return distance
+
+# รับพิกัดของจุดแรกจากผู้ใช้
+x1 = float(input("ใส่ค่า x1: "))
+y1 = float(input("ใส่ค่า y1: "))
+
+# รับพิกัดของจุดที่สองจากผู้ใช้
+x2 = float(input("ใส่ค่า x2: "))
+y2 = float(input("ใส่ค่า y2: "))
+
+# คำนวณระยะทาง
+distance = calculate_distance(x1, y1, x2, y2)
+
+# แสดงผลลัพธ์
+print(f"ระยะทางระหว่างจุด ({x1}, {y1}) และ ({x2}, {y2}) คือ: {distance:.2f} หน่วย")
