@@ -1,0 +1,18 @@
+# ฟังก์ชันสำหรับคำนวณรายรับและรายจ่าย
+def calculate_balance(income, expenses):
+    total_income = sum(income)  # รวมรายรับทั้งหมด
+    total_expenses = sum(expenses)  # รวมรายจ่ายทั้งหมด
+    balance = total_income - total_expenses  # คำนวณยอดคงเหลือ
+    return total_income, total_expenses, balance
+
+# รายรับและรายจ่าย (สามารถใส่ตัวเลขได้ตามความต้องการ)
+income = [5, 200, 150]  # ตัวอย่างรายรับ
+expenses = [80, 120, 500]  # ตัวอย่างรายจ่าย
+
+# เรียกใช้ฟังก์ชันเพื่อคำนวณ
+total_income, total_expenses, balance = calculate_balance(income, expenses)
+
+# แสดงผลลัพธ์
+print(f"รายรับทั้งหมด: {total_income} บาท")
+print(f"รายจ่ายทั้งหมด: {total_expenses} บาท")
+print(f"ยอดคงเหลือ: {balance} บาท")
