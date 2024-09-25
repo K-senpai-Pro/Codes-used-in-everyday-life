@@ -1,3 +1,5 @@
+import math
+
 # ฟังก์ชันสำหรับบวก
 def add(x, y):
     return x + y
@@ -17,6 +19,56 @@ def divide(x, y):
     else:
         return x / y
 
+# ฟังก์ชันสำหรับการยกกำลัง
+def power(x, y):
+    return x ** y
+
+# ฟังก์ชันสำหรับการยกกำลัง n
+def power_n(x, n):
+    return x ** n
+
+# ฟังก์ชันสำหรับหารเอาเศษ
+def modulus(x, y):
+    return x % y
+
+# ฟังก์ชันสำหรับรากที่สอง
+def square_root(x):
+    if x < 0:
+        return "ไม่สามารถหาค่ารากที่สองของจำนวนลบ"
+    else:
+        return math.sqrt(x)
+
+# ฟังก์ชันสำหรับหารากที่ n
+def n_th_root(x, n):
+    if x < 0 and n % 2 == 0:
+        return "ไม่สามารถหาค่ารากที่เป็นเลขคู่ของจำนวนลบ"
+    else:
+        return x ** (1/n)
+
+# ฟังก์ชันสำหรับลอการิธึม
+def logarithm(x, base):
+    if x <= 0:
+        return "ไม่สามารถหาค่าลอการิธึมของจำนวนที่น้อยกว่าหรือเท่ากับ 0"
+    if base <= 1:
+        return "ฐานลอการิธึมต้องมากกว่าหนึ่ง"
+    return math.log(x, base)
+
+# ฟังก์ชันสำหรับแฟกทอเรียล
+def factorial(n):
+    if n < 0:
+        return "ไม่สามารถหาค่าแฟกทอเรียลของจำนวนลบ"
+    return math.factorial(n)
+
+# ฟังก์ชันสำหรับฟังก์ชันทางตรีโกณมิติ
+def sine(x):
+    return math.sin(math.radians(x))
+
+def cosine(x):
+    return math.cos(math.radians(x))
+
+def tangent(x):
+    return math.tan(math.radians(x))
+
 # ฟังก์ชันหลักสำหรับเครื่องคิดเลข
 def calculator():
     print("เลือกการดำเนินการ:")
@@ -24,13 +76,26 @@ def calculator():
     print("2. ลบ")
     print("3. คูณ")
     print("4. หาร")
+    print("5. ยกกำลัง (x^y)")
+    print("6. ยกกำลัง n (x^n)")
+    print("7. หารเอาเศษ")
+    print("8. รากที่สอง")
+    print("9. หารากที่ n")
+    print("10. ลอการิธึม (log)")
+    print("11. แฟกทอเรียล (n!)")
+    print("12. ฟังก์ชัน sin")
+    print("13. ฟังก์ชัน cos")
+    print("14. ฟังก์ชัน tan")
 
-    choice = input("เลือกการดำเนินการ (1/2/3/4): ")
+    choice = input("เลือกการดำเนินการ (1-14): ")
 
-    # ตรวจสอบว่าเลือกการดำเนินการถูกต้องหรือไม่
-    if choice in ['1', '2', '3', '4']:
+    if choice in ['1', '2', '3', '4', '5', '6', '7']:
         num1 = float(input("ใส่ตัวเลขตัวแรก: "))
-        num2 = float(input("ใส่ตัวเลขตัวที่สอง: "))
+        
+        if choice in ['5', '6']:
+            num2 = float(input("ใส่ตัวเลขตัวที่สอง (หรือ n): "))  # ตัวที่สองสำหรับการยกกำลัง n
+        else:
+            num2 = float(input("ใส่ตัวเลขตัวที่สอง: "))
 
         if choice == '1':
             print(f"ผลลัพธ์: {num1} + {num2} = {add(num1, num2)}")
@@ -41,8 +106,45 @@ def calculator():
         elif choice == '4':
             result = divide(num1, num2)
             print(f"ผลลัพธ์: {num1} / {num2} = {result}")
+        elif choice == '5':
+            print(f"ผลลัพธ์: {num1} ^ {num2} = {power(num1, num2)}")
+        elif choice == '6':
+            print(f"ผลลัพธ์: {num1} ^ {num2} = {power_n(num1, num2)}")
+        elif choice == '7':
+            print(f"ผลลัพธ์: {num1} % {num2} = {modulus(num1, num2)}")
+
+    elif choice == '8':
+        num = float(input("ใส่ตัวเลข: "))
+        result = square_root(num)
+        print(f"รากที่สองของ {num} คือ: {result}")
+
+    elif choice == '9':
+        num = float(input("ใส่ตัวเลข: "))
+        n = float(input("ใส่ค่า n (หารากที่ n): "))
+        result = n_th_root(num, n)
+        print(f"รากที่ {n} ของ {num} คือ: {result}")
+
+    elif choice == '10':
+        num = float(input("ใส่ตัวเลข: "))
+        base = float(input("ใส่ฐานลอการิธึม: "))
+        result = logarithm(num, base)
+        print(f"log_{base}({num}) = {result}")
+
+    elif choice == '11':
+        num = int(input("ใส่จำนวนที่ต้องการหาค่าแฟกทอเรียล (n): "))
+        result = factorial(num)
+        print(f"{num}! = {result}")
+
+    elif choice in ['12', '13', '14']:
+        num = float(input("ใส่ตัวเลข: "))
+        if choice == '12':
+            print(f"sin({num}) = {sine(num)}")
+        elif choice == '13':
+            print(f"cos({num}) = {cosine(num)}")
+        elif choice == '14':
+            print(f"tan({num}) = {tangent(num)}")
     else:
-        print("เลือกไม่ถูกต้อง กรุณาเลือก 1, 2, 3, หรือ 4.")
+        print("เลือกไม่ถูกต้อง กรุณาเลือก 1-14.")
 
 # เรียกใช้เครื่องคิดเลข
 calculator()
