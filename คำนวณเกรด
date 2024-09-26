@@ -1,0 +1,45 @@
+def calculate_gpa(grades):
+    total_points = sum(grades)
+    total_courses = len(grades)
+
+    gpa = total_points / total_courses if total_courses > 0 else 0
+    return gpa
+
+def predict_future_gpa(current_gpa, future_grades, future_courses):
+    total_points = current_gpa * future_courses
+    future_points = sum(future_grades)
+
+    total_courses = future_courses + len(future_grades)
+    future_gpa = (total_points + future_points) / total_courses if total_courses > 0 else 0
+    return future_gpa
+
+def get_grades_from_user():
+    grades = []
+    print("กรุณาใส่เกรด (0, 1, 1.5, 2, 2.5, 3, 3.5, 4) และพิมพ์ 'done' เพื่อเสร็จสิ้น:")
+    while True:
+        grade_input = input("เกรด: ")
+        if grade_input.lower() == 'done':
+            break
+        try:
+            grade = float(grade_input)
+            if grade in [0, 1, 1.5, 2, 2.5, 3, 3.5, 4]:
+                grades.append(grade)
+            else:
+                print("กรุณาใส่เกรดที่ถูกต้อง!")
+        except ValueError:
+            print("กรุณาใส่ตัวเลขที่ถูกต้อง!")
+    return grades
+
+# เริ่มต้นโปรแกรม
+print("คำนวณเกรดเฉลี่ยและคาดการณ์เกรดในอนาคต")
+
+# เกรดปัจจุบัน
+current_grades = get_grades_from_user()
+current_gpa = calculate_gpa(current_grades)
+print(f"เกรดเฉลี่ยปัจจุบัน: {current_gpa:.2f}")
+
+# เกรดในอนาคต
+future_grades = get_grades_from_user()
+future_courses = int(input("จำนวนวิชาที่จะเรียนในอนาคต: "))
+future_gpa = predict_future_gpa(current_gpa, future_grades, future_courses)
+print(f"คาดการณ์เกรดเฉลี่ยในอนาคต: {future_gpa:.2f}")
