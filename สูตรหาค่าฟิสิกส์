@@ -1,0 +1,97 @@
+def calculate_velocity(distance, time):
+    return distance / time
+
+def calculate_force(mass, acceleration):
+    return mass * acceleration
+
+def calculate_kinetic_energy(mass, velocity):
+    return 0.5 * mass * (velocity ** 2)
+
+def calculate_work(force, distance):
+    return force * distance
+
+def calculate_potential_energy(mass, height, gravity=9.81):
+    return mass * gravity * height
+
+def calculate_acceleration(initial_velocity, final_velocity, time):
+    return (final_velocity - initial_velocity) / time
+
+def calculate_pressure(force, area):
+    return force / area
+
+def calculate_density(mass, volume):
+    return mass / volume
+
+def main():
+    while True:
+        print("\nเลือกการคำนวณ:")
+        print("1. คำนวณความเร็ว")
+        print("2. คำนวณแรง")
+        print("3. คำนวณพลังงานจลน์")
+        print("4. คำนวณงาน")
+        print("5. คำนวณพลังงานศักย์")
+        print("6. คำนวณความเร่ง")
+        print("7. คำนวณแรงดัน")
+        print("8. คำนวณความหนาแน่น")
+        print("9. ออกจากโปรแกรม")
+
+        choice = input("ป้อนหมายเลขที่ต้องการ: ")
+
+        if choice == "1":
+            distance = float(input("ป้อนระยะทาง (เมตร): "))
+            time = float(input("ป้อนเวลา (วินาที): "))
+            velocity = calculate_velocity(distance, time)
+            print(f"ความเร็ว: {velocity} m/s")
+        
+        elif choice == "2":
+            mass = float(input("ป้อนมวล (กิโลกรัม): "))
+            acceleration = float(input("ป้อนความเร่ง (m/s^2): "))
+            force = calculate_force(mass, acceleration)
+            print(f"แรง: {force} N")
+        
+        elif choice == "3":
+            mass = float(input("ป้อนมวล (กิโลกรัม): "))
+            velocity = float(input("ป้อนความเร็ว (m/s): "))
+            kinetic_energy = calculate_kinetic_energy(mass, velocity)
+            print(f"พลังงานจลน์: {kinetic_energy} J")
+        
+        elif choice == "4":
+            force = float(input("ป้อนแรง (N): "))
+            distance = float(input("ป้อนระยะทาง (เมตร): "))
+            work = calculate_work(force, distance)
+            print(f"งาน: {work} J")
+        
+        elif choice == "5":
+            mass = float(input("ป้อนมวล (กิโลกรัม): "))
+            height = float(input("ป้อนความสูง (เมตร): "))
+            potential_energy = calculate_potential_energy(mass, height)
+            print(f"พลังงานศักย์: {potential_energy} J")
+        
+        elif choice == "6":
+            initial_velocity = float(input("ป้อนความเร็วเริ่มต้น (m/s): "))
+            final_velocity = float(input("ป้อนความเร็วสุดท้าย (m/s): "))
+            time_for_acceleration = float(input("ป้อนเวลาในการเร่ง (วินาที): "))
+            acceleration = calculate_acceleration(initial_velocity, final_velocity, time_for_acceleration)
+            print(f"ความเร่ง: {acceleration} m/s^2")
+        
+        elif choice == "7":
+            force = float(input("ป้อนแรง (N): "))
+            area = float(input("ป้อนพื้นที่ (ตารางเมตร): "))
+            pressure = calculate_pressure(force, area)
+            print(f"แรงดัน: {pressure} Pa")
+        
+        elif choice == "8":
+            mass = float(input("ป้อนมวล (กิโลกรัม): "))
+            volume = float(input("ป้อนปริมาตร (ลูกบาศก์เมตร): "))
+            density = calculate_density(mass, volume)
+            print(f"ความหนาแน่น: {density} kg/m^3")
+        
+        elif choice == "9":
+            print("ออกจากโปรแกรม.")
+            break
+        
+        else:
+            print("กรุณาเลือกหมายเลขที่ถูกต้อง!")
+
+if __name__ == "__main__":
+    main()
